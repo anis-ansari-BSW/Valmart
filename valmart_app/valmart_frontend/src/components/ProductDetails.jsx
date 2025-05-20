@@ -26,6 +26,7 @@ const ProductDetails = () => {
             .then(response => {
                 setProduct(response.data);
                 setLoading(false);
+                console.log("Product data:", response.data);
             })
             .catch(error => {
                 console.error('There was an error fetching the product!', error);

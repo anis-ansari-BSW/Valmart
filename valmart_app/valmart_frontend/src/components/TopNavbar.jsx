@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from '../context/CartContext';
 
 function TopNavbar() {
-  const { cart } = useContext(CartContext);
+  const { cart, getCartTotal, getCartCount } = useContext(CartContext);
   return (
     <>
       <nav className="sticky top-0 z-10">
@@ -175,9 +175,10 @@ function TopNavbar() {
                       <p className="flex justify-center pb-1">
                         <FaShoppingCart />
                       </p>
-                      <p className="text-sm mb-0 p-0">{cart.reduce((total, item) => total + item.final_price * 1, 0).toFixed(2)}</p>
-
-                      <span className="bg-yellow-400 px-1 rounded-full text-black border border-black text-sm absolute top-0 right-2">{cart.length}</span>
+                      <p className="text-sm mb-0 p-0">${getCartTotal().toFixed(2)}</p>
+                      <span className="bg-yellow-400 px-1 rounded-full text-black border border-black text-sm absolute top-0 right-2">
+                        {getCartCount()}
+                      </span>
                     </Link>
                   </div>
                 </div>
